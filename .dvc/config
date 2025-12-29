@@ -1,6 +1,4 @@
 [core]
     remote = s3remote
-['remote "myremote"']
-    url = s3://loksai-edu-mlproject1
 ['remote "s3remote"']
     url = s3://biswa-mlproj-bkt1
