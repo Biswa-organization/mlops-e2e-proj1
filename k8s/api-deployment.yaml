@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: loksai-api-deploy
+  namespace: loksai
 spec:
   replicas: 1
   selector:
@@ -19,5 +20,19 @@ spec:
         - containerPort: 8000
         env:
         - name: MLFLOW_TRACKING_URI
-          value: "http://172.31.28.195:5000"
+          value: "http://172.31.28.195:5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loksai-api-svc
+  namespace: loksai
+spec:
+  selector:
+    app: api
+  ports:
+  - port: 8000
+    targetPort: 8000
+  type: ClusterIP
 
